@@ -1,2 +1,2 @@
 #!/bin/bash
-as -S $CFILE
+objdump -S $CFILE.o > $CFILE.s
