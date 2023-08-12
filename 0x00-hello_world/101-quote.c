@@ -1,7 +1,7 @@
 #include <stdio.h>
 /**
  * main - function thar outputs a string
- * Return - 1 (Error)
+ * Return: 1 (Error)
  */
 int main(void)
 {
