@@ -1,5 +1,5 @@
 #include <stdio.h>
-/** 
+/**
  * main - Function that outputs all numbers of base 16 in lowercase letters
  * Return: 0 (Success)
  */
