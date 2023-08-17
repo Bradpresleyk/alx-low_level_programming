@@ -1,15 +1,16 @@
 #include <unistd.h>
 #include "main.h"
 /**
- * main - Function that prints the alphabet in lowercase
+ * print - Function that prints the alphabet in lowercase
  * Return: 0 (Success)
  */
 void print_alphabet(void)
 {
-       	int n = 97;
+	int n = 97;
 	while(n <= 122)
-	{	_putchar(n);
-                n++;
-        }	
+	{
+		_putchar(n);
+		n++;
+        }
 	_putchar('\n');
 }
