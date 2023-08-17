@@ -3,7 +3,7 @@
 /**
  * print - Function that prints the alphabet ten times
 */
-void 2-print_alphabet_x10.c(void)
+void print_alphabet_x10.c(void)
 {
 	int n = 97;
 	int m = 0;
