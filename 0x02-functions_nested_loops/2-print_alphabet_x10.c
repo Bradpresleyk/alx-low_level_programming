@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include "main.h"
 /**
- * print - Function that prints the alphabet ten times
+ * print_alphabet_x10 - Function that prints the alphabet ten times
 */
 void print_alphabet_x10(void)
 {
@@ -10,7 +10,8 @@ void print_alphabet_x10(void)
 	while (m < 10)
 	{
 		int n = 97;
-		while(n <= 122)
+
+		while (n <= 122)
 		{
 			_putchar(n);
 			n++;
