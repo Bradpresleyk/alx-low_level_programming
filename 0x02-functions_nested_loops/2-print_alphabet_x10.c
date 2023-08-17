@@ -5,16 +5,17 @@
 */
 void print_alphabet_x10(void)
 {
-	int n = 97;
 	int m = 0;
 
-	while (m <= 10)
+	while (m < 10)
 	{
+		int n = 97;
 		while(n <= 122)
 		{
 			_putchar(n);
 			n++;
 		}
+		m++;
 	}
 	_putchar('\n');
 }
