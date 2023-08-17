@@ -6,7 +6,7 @@
  */
 int _islower(int c)
 {
-        // c - takes an integer as an argument 
+        /* c - takes an integer as an argument */
 	if (c > 96 && c < 122)
 	{
 		return (1);
