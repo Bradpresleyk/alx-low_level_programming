@@ -1,8 +1,8 @@
 #include <unistd.h>
 #include "main.h"
 /**
- * _islower.c - Checks if a character is lowercase
- * c - takes an integer as an argument
+ * _islower - Checks if a character is lowercase
+ * 'c' - takes an integer as an argument
  * Return: if character is lowercase returns 1 otherwise returns 0
  */
 int _islower(int c)
