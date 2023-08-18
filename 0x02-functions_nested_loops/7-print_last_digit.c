@@ -12,7 +12,14 @@ int print_last_digit(int n)
 	{
 		n = -n;
 	}
-	lastdigit = n % 10;
+	if (n < 99)
+	{
+		lastdigit = n % 10;
+	}
+	else if (n > 99)
+	{
+		lastdigit = n % 100;
+	}
 	_putchar(lastdigit + '0');
 	return lastdigit;
 }
