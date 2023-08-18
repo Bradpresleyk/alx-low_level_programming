@@ -4,7 +4,7 @@
  * jack_bauer - Function outputs every minute of the day of Jack Bauer
  * Return: 0 (Success)
  */
-void jack_bauer(void)
+int jack_bauer(void)
 {
 	int hour, minute;
 
