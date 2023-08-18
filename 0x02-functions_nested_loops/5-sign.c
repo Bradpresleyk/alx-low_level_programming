@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include "main.h"
 /**
- * print_sign - Function that prints numbers according to whether they are positive or negative
+ * print_sign - Function that prints numbers according to sign
  * @n: Takes an integer value as an arguement
  * Return: 1 if positive and 0 if zero or -1 if negative
  */
@@ -20,6 +20,6 @@ int print_sign(int n)
 	else
 	{
 		_putchar('-');
-		return(-1);
+		return (-1);
 	}
 }
