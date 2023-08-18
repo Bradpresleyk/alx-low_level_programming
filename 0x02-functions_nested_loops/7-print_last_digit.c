@@ -11,9 +11,6 @@ int print_last_digit(int n)
 	if (n < 0)
 	{
 		n = -n;
-	}
-	if (n < 99)
-	{
 		lastdigit = n % 10;
 	}
 	else if (n > 99)
