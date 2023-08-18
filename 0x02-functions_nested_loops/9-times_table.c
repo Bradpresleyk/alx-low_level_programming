@@ -13,7 +13,7 @@ int times_table(void)
 		for (j = 0; j <= n; j++)
 		{
 			int result = i * j;
-
+	
 			if (j != 0)
 			{
 				_putchar(',');
@@ -30,9 +30,10 @@ int times_table(void)
 				{
 					_putchar(' ');
 				}
-				_putchar(result + '0');
-			}
-			_putchar('\n');
+					_putchar(result + '0');
+				}
+					_putchar('\n');
+		}
+		return (0);
 	}
-	return (0);
 }
