@@ -8,31 +8,5 @@
  */
 int mul(int a, int b)
 {
-	int result = a * b;
-
-	if (result >= 0)
-	{
-	int digit = result % 10;
-	int tens = result / 10;
-
-	if (tens != 0)
-	{
-	_putchar('0' + tens);
-	}
-	_putchar('0' + digit);
-	}
-	else
-	{
-	_putchar('-');
-	result = -result;
-	int digit = result % 10;
-	int tens = result / 10;
-
-	if (tens != 0)
-	{
-	_putchar('0' + tens);
-	}
-	_putchar('0' + digit);
-	}
-	return (result);
+	return (a * b);
 }
