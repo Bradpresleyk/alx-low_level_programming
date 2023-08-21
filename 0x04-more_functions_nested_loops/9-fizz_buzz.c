@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "main.h"
 /**
  * main - Function that prints numbers 0-100 except multiples of 3,5 3 and 5
  * Return: 0 (Success)
@@ -29,6 +28,7 @@ int main(void)
 	{
 	printf(i);
 	printf('\n');
+	}
 	}
 	return (0)
 }
