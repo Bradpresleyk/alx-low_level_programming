@@ -4,7 +4,7 @@
  * print_square - Function that prints a square according to size
  * @size: Parameter that takes a size value
  */
-void print_square(int size)
+int print_square(int size)
 {
 	if (size <= 0)
 	{
