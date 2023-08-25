@@ -13,8 +13,10 @@ void rev_string(char *s)
 	length++;
 	s++;
 	}
+	s--;
 	while (length > 0)
 	{
+	_putchar(*s);
 	s--;
 	length--;
 	}
