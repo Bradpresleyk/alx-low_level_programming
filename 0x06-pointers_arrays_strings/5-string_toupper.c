@@ -1,9 +1,9 @@
 #include "main.h"
 #include <unistd.h>
 /**
- * *string_toupper - Function that changes all string letters to uppercase
+ * string_toupper - Function that changes all string letters to uppercase
  * @n: Pointer
- * Return: n 
+ * Return: n
  */
 char *string_toupper(char *n)
 {
