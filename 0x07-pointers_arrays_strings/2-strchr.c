@@ -15,7 +15,7 @@ char *_strchr(char *s, char c)
 	{
 	if (*s[i] == c)
 	{
-	first_occ = *s[i]
+	first_occ = s[i]
 	}
 	i++;
 	}
