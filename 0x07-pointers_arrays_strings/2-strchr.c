@@ -9,15 +9,14 @@
 char *_strchr(char *s, char c)
 {
 	char *first_occ = NULL;
-	int i = 0;
 
-	while (*s[i] != '\0')
+	while (*s != '\0')
 	{
-	if (*s[i] == c)
+	if (*s == c)
 	{
-	first_occ = s[i]
+	return (s);
 	}
-	i++;
+	s++;
 	}
-	return (first_occ);
+	return (NULL);
 }
