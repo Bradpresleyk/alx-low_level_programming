@@ -20,6 +20,7 @@ void print_times_table(int n)
 	int result = n * j;
 
 	_putchar(result + '0');
+	_putchar(' ');
 	}
 	_putchar('\n');
 	}
