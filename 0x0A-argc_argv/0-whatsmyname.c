@@ -2,8 +2,8 @@
 #include "main.h"
 /**
  * main - Prints program name
- * argc: number of arguments
- * argv: arrray of arguments
+ * @argc: number of arguments
+ * @argv: arrray of arguments
  * Return: 0 (Success)
  */
 int main(int argc __attribute__((unused)), char *argv[])
