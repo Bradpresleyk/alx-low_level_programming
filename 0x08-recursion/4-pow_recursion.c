@@ -8,7 +8,7 @@
  */
 int _pow_recursion(int x, int y)
 {
-	int sum;
+	int sum = 0;
 
 	if (y < 0)
 	{
@@ -16,8 +16,8 @@ int _pow_recursion(int x, int y)
 	}
 	if (y == 0)
 	{
-	return (x * x);
+	return (sum);
 	}
-	sum =  _pow_recursion(x, y - 1);
+	sum =  _pow_recursion(x * x, y - 1);
 	return (sum);
 }
