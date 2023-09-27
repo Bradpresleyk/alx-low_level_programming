@@ -18,6 +18,6 @@ int _pow_recursion(int x, int y)
 	{
 	return (x * x);
 	}
-	sum =  _pow_recursion(x, y - 1);
+	sum = x * _pow_recursion(x, y - 1);
 	return (sum);
 }
