@@ -14,10 +14,10 @@ int _pow_recursion(int x, int y)
 	{
 	return (-1);
 	}
-	if (y == 0)
+	if (y == 1)
 	{
-	return (x * 1);
+	return (x * y);
 	}
-	sum *=  _pow_recursion(x, y - 1);
+	sum =  _pow_recursion(x, y - 1);
 	return (sum);
 }
