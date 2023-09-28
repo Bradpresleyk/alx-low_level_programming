@@ -5,9 +5,8 @@
  * @n: Number to find square root of
  * Return: Returns the square root of a number otherwise returns -1
  */
-int int _sqrt_recursion(int n)
+int _sqrt_recursion(int n)
 {
-	int original = n;
 	int test;
 
 	if (n <= 0)
@@ -18,7 +17,7 @@ int int _sqrt_recursion(int n)
 	{
 	return (n);
 	}
-	test = sqrt_recursion(n - 1);
+	test = _sqrt_recursion(n - 1);
 
 	if (test * test > n)
 	{
