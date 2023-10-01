@@ -1,5 +1,8 @@
 #include "main.h"
 #include <unistd.h>
+
+int actual_sqrt_recursion(int n, int i);
+
 /**
  * _sqrt_recursion - Function that returns the square root of a number
  * @n: Number to find square root of
@@ -7,21 +10,28 @@
  */
 int _sqrt_recursion(int n)
 {
-	int test;
-
 	if (n < 0)
 	{
 	return (-1);
 	}
-	if (n <= 1)
-	{
-	return (n);
-	}
-	test = _sqrt_recursion(n - 1);
+	return (actual_sqrt_recursion(n, 0));
+}
 
-	if (test * test > n)
+/**
+ * actual_sqrt_recursion - recurses to find square root of a number
+ * @n: Number to calulate the square root of
+ * @i: Iterator
+ * Return: Returns the square root
+ */
+int actual_sqrt_recursion(int n, int i)
+{
+	if (i * i > n)
 	{
-	return (test - 1);
+	return (-1);
 	}
-	return (test);
+	if (i * i == n)
+	{
+	return (i);
+	}
+	return (actual_sqrt_recursion(n, i + 1));
 }
