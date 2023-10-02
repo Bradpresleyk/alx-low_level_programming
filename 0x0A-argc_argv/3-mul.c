@@ -9,18 +9,21 @@
  */
 int main(int argc, char *argv[])
 {
-	int sum;
+	int sum = 1;
+	int i;
 
+	for (i = 1; i < argc; i++)
+	{
+	sum *= argv[i];
+	}
 	if (argc - 1 == 2)
 	{
-	sum = atoi(argv[1]) * atoi(argv[2]);
 	printf("%d\n", sum);
 	return (0);
 	}
-	if (argc - 1 != 2)
+	else if (argc - 1 != 2)
 	{
 	printf("%s\n", "Error");
 	return (1);
 	}
-
 }
