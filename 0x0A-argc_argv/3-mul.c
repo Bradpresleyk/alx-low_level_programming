@@ -12,12 +12,12 @@ int main(int argc, char *argv[])
 	int sum = 1;
 	int i;
 
-	if (argc - 1 == 2)
-	{
 	for (i = 1; i < argc; i++)
 	{
 	sum *= atoi(argv[i]);
 	}
+	if (argc - 1 == 2)
+	{
 	printf("%d\n", sum);
 	return (0);
 	}
