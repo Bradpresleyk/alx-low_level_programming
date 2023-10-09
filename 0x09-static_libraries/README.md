@@ -1,1 +1,2 @@
-C Static libraries
+#!/bin/bash
+Static Libraries
