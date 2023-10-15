@@ -10,7 +10,6 @@ int count_word(char *s)
 	int flag, c, w;
 
 	flag = 0;
-
 	w = 0;
 
 	for (c = 0; s[c] != '\0'; c++)
@@ -28,29 +27,29 @@ int count_word(char *s)
 	return (w);
 }
 /**
- * **strtow - splits a string into words
- * @str: string to split
- * Return: pointer to an array of strings (Success) or NULL (Error)
+ * alloc_words - allocates memory for an array of words
+ * @words: number of words
+ * Return: pointer to the allocated memory (Success) or NULL (Error)
  */
-char **strtow(char *str)
+char **alloc_words(int words)
 {
-	char **matrix, *tmp;
+	char **matrix;
 
-	int i, k = 0, len = 0, words, c = 0, start, end;
+	matrix = (char **)malloc(sizeof(char *) * (words + 1));
+	return (matrix);
+}
+/**
+ * fill_words - splits the input string into words and fills the matrix
+ * @str: input string
+ * @matrix: pointer to the matrix of words
+ */
+void fill_words(char *str, char **matrix)
+{
+	int i, k = 0, len = 0, c = 0, start, end;
 
 	while (*(str + len))
 	{
 	len++;
-	}
-	words = count_word(str);
-	if (words == 0)
-	{
-	return (NULL);
-	}
-	matrix = (char **) malloc(sizeof(char *) * (words + 1));
-	if (matrix == NULL)
-	{
-	return (NULL);
 	}
 	for (i = 0; i <= len; i++)
 	{
@@ -59,17 +58,18 @@ char **strtow(char *str)
 	if (c)
 	{
 	end = i;
-	tmp = (char *) malloc(sizeof(char) * (c + 1));
-	if (tmp == NULL)
+	matrix[k] = (char *)malloc(sizeof(char) * (c + 1));
+	if (matrix[k] == NULL)
 	{
-	return (NULL);
+	return;
 	}
+	char *tmp = matrix[k];
+
 	while (start < end)
 	{
 	*tmp++ = str[start++];
 	}
 	*tmp = '\0';
-	matrix[k] = tmp - c;
 	k++;
 	c = 0;
 	}
@@ -80,5 +80,26 @@ char **strtow(char *str)
 	}
 	}
 	matrix[k] = NULL;
+}
+/**
+ * **strtow - splits a string into words
+ * @str: string to split
+ * Return: pointer to an array of strings (Success) or NULL (Error)
+ */
+char **strtow(char *str)
+{
+	int words = count_word(str);
+
+	if (words == 0)
+	{
+	return (NULL);
+	}
+	char **matrix = alloc_words(words);
+
+	if (matrix == NULL)
+	{
+	return (NULL);
+	}
+	fill_words(str, matrix);
 	return (matrix);
 }
