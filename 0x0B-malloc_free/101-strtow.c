@@ -38,14 +38,13 @@ char **split_string(char *str, int words)
 	int i;
 	int t = 0;
 	int j;
-	int len;
 	char **matrix = (char **)malloc(sizeof(char *) * (words + 1));
 
 	if (matrix == NULL)
 	{
 	return (NULL);
 	}
-	for (i = 0, len = 0; str[i] != '\0'; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
 	if (str[i] == ' ' || str[i] == '\0')
 	{
@@ -77,12 +76,13 @@ int main(void)
 {
 	char *str = "This is a test string";
 	int words = count_word(str);
+	int i;
 
 	char **result = split_string(str, words);
 
 	if (result)
 	{
-	for (int i = 0; result[i] != NULL; i++)
+	for (i = 0; result[i] != NULL; i++)
 	{
 	printf("%s\n", result[i]);
 	free(result[i]);
