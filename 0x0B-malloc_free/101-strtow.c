@@ -1,22 +1,19 @@
 #include <stdlib.h>
-#include "main.h"
+#include <stdio.h>
 /**
- * count_word - helper function to count the number of words in a string
- * @s: string to evaluate
- *
- * Return: number of words
+ * count_word - Helper function to count the number of words in a string
+ * @s: The input string
+ * Return: The number of words
  */
 int count_word(char *s)
 {
-	int flag, c, w;
+	int flag = 0;
+	int w = 0;
 
-	flag = 0;
-	w = 0;
-
-	for (c = 0; s[c] != '\0'; c++)
+	for (int c = 0; s[c] != '\0'; c++)
 	{
 	if (s[c] == ' ')
-	{    
+	{
 	flag = 0;
 	}
 	else if (flag == 0)
@@ -27,56 +24,72 @@ int count_word(char *s)
 	}
 	return (w);
 }
-
 /**
- * strtow - splits a string into words
- * @str: string to split
- *
- * Return: pointer to an array of strings (Success) or NULL (Error)
+ * split_string - Split a string into words
+ * @str: The input string
+ * @words: The number of words
+ * Return: A pointer to an array of strings (Success) or NULL (Error)
  */
-char **strtow(char *str)
+char **split_string(char *str, int words)
 {
-    char **matrix, *tmp;
-    int i, k = 0, len = 0, words, c = 0, start, end;
+	char **matrix = (char **)malloc(sizeof(char *) * (words + 1));
 
-    while (*(str + len))
-        len++;
-    
-    words = count_word(str);
-    
-    if (words == 0)
-        return (NULL);
-    
-    matrix = (char **)malloc(sizeof(char *) * (words + 1));
-    
-    if (matrix == NULL)
-        return (NULL);
-    
-    for (i = 0; i <= len; i++)
-    {
-        if (str[i] == ' ' || str[i] == '\0')
-        {
-            if (c)
-            {
-                end = i;
-                tmp = (char *)malloc(sizeof(char) * (c + 1));
-                if (tmp == NULL)
-                    return (NULL);
-                
-                while (start < end)
-                    *tmp++ = str[start++];
-                
-                *tmp = '\0';
-                matrix[k] = tmp - c;
-                k++;
-                c = 0;
-            }
-        }
-        else if (c++ == 0)
-        {
-            start = i;
-        }
-    }
-    	matrix[k] = NULL;
-    	return (matrix);
+	if (matrix == NULL)
+	{
+	return (NULL);
+	}
+	int k = 0;
+	int start = 0;
+
+	for (int i = 0, len = 0; str[i] != '\0'; i++)
+	{
+	if (str[i] == ' ' || str[i] == '\0')
+	{
+	if (i > start)
+	{
+	char *tmp = (char *)malloc(sizeof(char) * (i - start + 1));
+
+	if (tmp == NULL)
+	{
+	return (NULL);
+	}
+	int t = 0;
+
+	for (int j = start; j < i; j++)
+	{
+	tmp[t] = str[j];
+	t++;
+	}
+	tmp[t] = '\0';
+	matrix[k] = tmp;
+	k++;
+	}
+	start = i + 1;
+	}
+	}
+	matrix[k] = NULL;
+	return (matrix);
+}
+
+int main(void)
+{
+	char *str = "This is a test string";
+	int words = count_word(str);
+
+	char **result = split_string(str, words);
+
+	if (result)
+	{
+	for (int i = 0; result[i] != NULL; i++)
+	{
+	printf("%s\n", result[i]);
+	free(result[i]);
+	}
+	free(result);
+	}
+	else
+	{
+	printf("Failed to split the string.\n");
+	}
+	return (0);
 }
