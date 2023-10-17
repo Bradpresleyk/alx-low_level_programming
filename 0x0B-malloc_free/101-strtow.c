@@ -1,16 +1,17 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include "main.h"
 /**
  * count_word - Helper function to count the number of words in a string
- * @s: The input string
- * Return: The number of words
+ * @s: The string to evaluate
+ *
+ * Return: Number of words
  */
 int count_word(char *s)
 {
-	int flag = 0;
-	int w = 0;
-	int c;
+	int flag, c, w;
+
+	flag = 0;
+	w = 0;
 
 	for (c = 0; s[c] != '\0'; c++)
 	{
@@ -27,72 +28,48 @@ int count_word(char *s)
 	return (w);
 }
 /**
- * split_string - Split a string into words
- * @str: The input string
- * @words: The number of words
- * Return: A pointer to an array of strings (Success) or NULL (Error)
+ * strtow - Splits a string into words
+ * @str: The string to split
+ *
+ * Return: Pointer to an array of strings (Success) or NULL (Error)
  */
-char **split_string(char *str, int words)
+char **strtow(char *str)
 {
-	int k = 0;
-	int start = 0;
-	int i;
-	int t = 0;
-	int j;
-	char **matrix = (char **)malloc(sizeof(char *) * (words + 1));
+	char **matrix, *tmp;
+	int i, k = 0, len = 0, words, c = 0, start, end;
 
-	if (matrix == NULL)
-	{
+	while (*(str + len))
+	len++;
+	words = count_word(str);
+	if (words == 0)
 	return (NULL);
-	}
-	for (i = 0; str[i] != '\0'; i++)
+	matrix = (char **)malloc(sizeof(char *) * (words + 1));
+	if (matrix == NULL)
+	return (NULL);
+
+	for (i = 0; i <= len; i++)
 	{
 	if (str[i] == ' ' || str[i] == '\0')
 	{
-	if (i > start)
+	if (c)
 	{
-	char *tmp = (char *)malloc(sizeof(char) * (i - start + 1));
-
+	end = i;
+	tmp = (char *)malloc(sizeof(char) * (c + 1));
 	if (tmp == NULL)
-	{
 	return (NULL);
-	}
-	for (j = start; j < i; j++)
-	{
-	tmp[t] = str[j];
-	t++;
-	}
-	tmp[t] = '\0';
-	matrix[k] = tmp;
+	while (start < end)
+	*tmp++ = str[start++];
+	*tmp = '\0';
+	matrix[k] = tmp - c;
 	k++;
+	c = 0;
 	}
-	start = i + 1;
+	}
+	else if (c++ == 0)
+	{
+	start = i;
 	}
 	}
 	matrix[k] = NULL;
 	return (matrix);
-}
-
-int main(void)
-{
-	char *str = "This is a test string";
-	int words = count_word(str);
-	int i;
-
-	char **result = split_string(str, words);
-
-	if (result)
-	{
-	for (i = 0; result[i] != NULL; i++)
-	{
-	printf("%s\n", result[i]);
-	free(result[i]);
-	}
-	free(result);
-	}
-	else
-	{
-	printf("Failed to split the string.\n");
-	}
-	return (0);
 }
