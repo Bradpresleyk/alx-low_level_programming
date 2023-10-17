@@ -9,8 +9,9 @@ int count_word(char *s)
 {
 	int flag = 0;
 	int w = 0;
+	int c;
 
-	for (int c = 0; s[c] != '\0'; c++)
+	for (c = 0; s[c] != '\0'; c++)
 	{
 	if (s[c] == ' ')
 	{
@@ -32,16 +33,19 @@ int count_word(char *s)
  */
 char **split_string(char *str, int words)
 {
+	int k = 0;
+	int start = 0;
+	int i;
+	int t = 0;
+	int j;
+	int len;
 	char **matrix = (char **)malloc(sizeof(char *) * (words + 1));
 
 	if (matrix == NULL)
 	{
 	return (NULL);
 	}
-	int k = 0;
-	int start = 0;
-
-	for (int i = 0, len = 0; str[i] != '\0'; i++)
+	for (i = 0, len = 0; str[i] != '\0'; i++)
 	{
 	if (str[i] == ' ' || str[i] == '\0')
 	{
@@ -53,9 +57,7 @@ char **split_string(char *str, int words)
 	{
 	return (NULL);
 	}
-	int t = 0;
-
-	for (int j = start; j < i; j++)
+	for (j = start; j < i; j++)
 	{
 	tmp[t] = str[j];
 	t++;
