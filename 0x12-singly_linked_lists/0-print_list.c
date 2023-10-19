@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlin.h>
 #include "lists.h"
 /**
  * print_list - prints all the elements of a linked list
@@ -14,6 +15,7 @@ size_t print_list(const list_t *h)
 	if (!h->str)
 	{
 	printf("[0] (nil)\n");
+
 	}
 	else
 	{
