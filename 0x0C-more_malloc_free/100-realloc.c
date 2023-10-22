@@ -1,47 +1,77 @@
-#include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 /**
-* _realloc - reallocates a memory block using malloc and free
-* @ptr: pointer to the memory previously allocated
-* @old_size:is the size, in bytes, of the allocated space for ptr
-* @new_size: the new size, in bytes of the new memory block
-* Return: pointer allocate new size memory, or NULL
-*/
+ * *_realloc - Reallocates aa block of memory
+ * @ptr: Previous allocated memory
+ * @old_size: Size of old memory
+ * @new_size: Size of new memory
+ * Return: returns newly allocated memory
+ */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	char *nptr;
-	unsigned int i;
-
-	if (new_size == old_size)
-	{
-	return (ptr);
-	}
-	if ((new_size == 0) && (ptr != NULL))
+	if (new_size == 0)
 	{
 	free(ptr);
 	return (NULL);
 	}
 	if (ptr == NULL)
 	{
-	nptr = malloc(new_size);
-	if (nptr == NULL)
+	return (malloc(new_size));
+	}
+	if (new_size == old_size)
+	{
+	return (ptr);
+	}
+	void *new_ptr = malloc(new_size);
+
+	if (new_ptr == NULL)
 	{
 	return (NULL);
 	}
-	}
-	if (new_size > old_size && (ptr != NULL))
-	{
-	ntpr = malloc(new_size);
-	if (ntpr == NULL)
-	{
-	return (ntpr);
-	}
-	for (i = 0; i < old_size; i++)
-	{
-	ntpr[i] = *((char *)ptr + 1);
-	}
+	size_t min_size = (old_size < new_size) ? old_size : new_size;
+
+	memcpy(new_ptr, ptr, min_size);
+
 	free(ptr);
+
+	return (new_ptr);
+}
+/**
+ * main - Reallocate memory
+ * Return: 0 Success
+ */
+int main(void)
+{
+	unsigned int old_size = 5;
+	unsigned int new_size = 10;
+
+	int *ptr = (int *)malloc(old_size * sizeof(int));
+
+	if (ptr == NULL)
+	{
+	fprintf(stderr, "Memory allocation failed.\n");
+	return (1);
 	}
+	for (unsigned int i = 0; i < old_size; i++)
+	{
+	ptr[i] = i * 2;
 	}
-	return (nptr);
+	for (unsigned int i = 0; i < old_size; i++)
+	{
+	printf("%d ", ptr[i]);
+	}
+	printf("\n");
+
+	ptr = _realloc(ptr, old_size * sizeof(int), new_size * sizeof(int));
+
+	for (unsigned int i = 0; i < new_size; i++)
+	{
+	printf("%d ", ptr[i]);
+	}
+	printf("\n");
+
+	free(ptr);
+
+	return (0);
 }
