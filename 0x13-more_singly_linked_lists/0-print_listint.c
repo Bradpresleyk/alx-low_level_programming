@@ -13,20 +13,31 @@ size_t print_listint(const listint_t *h)
 
 	while (h != NULL)
 	{
-	printf("%d", h->n);
+	printf("%d\n", h->n);
 	h = h->next;
 	count++;
 	}
 	return (count);
 }
-
 int main(void)
 {
-	listint_t *head = NULL;
+	listint_t *head;
+	listint_t *new;
+	listint_t hello = {8, NULL};
+	size_t n;
 
-	size_t num_nodes_printed = print_listint(head);
-
-	printf("Number of nodes printed: %zu\n", num_nodes_printed);
-
+	head = &hello;
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
+	{
+	printf("Error\n");
+	return (1);
+	}
+	new->n = 9;
+	new->next = head;
+	head = new;
+	n = print_listint(head);
+	printf("-> %lu elements\n", n);
+	free(new);
 	return (0);
 }
