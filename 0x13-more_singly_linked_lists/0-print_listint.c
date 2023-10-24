@@ -19,3 +19,14 @@ size_t print_listint(const listint_t *h)
 	}
 	return (count);
 }
+
+int main(void)
+{
+	listint_t *head = NULL;
+
+	size_t num_nodes_printed = print_listint(head);
+
+	printf("Number of nodes printed: %zu\n", num_nodes_printed);
+
+	return (0);
+}
