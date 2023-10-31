@@ -14,7 +14,7 @@ unsigned int binary_to_uint(const char *b)
 	{
 	temp = b[i];
 
-	if (temp != '1' && temp != '0' && temp != NULL)
+	if (temp != '1' && temp != '0' || temp == NULL)
 	{
 	return (0);
 	}
