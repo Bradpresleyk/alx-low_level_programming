@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <fontl.h>
+#include <fcntl.h>
 #include <stdlib.h>
 /**
  * read_textfile - Reads a text file and prints it
@@ -31,7 +31,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	close(file_d);
 	return (0);
 	}
-	lenr = read(file_d, buffer, letter);
+	lenr = read(file_d, buffer, letters);
 	close(file_d);
 	if (lenr == -1)
 	{
