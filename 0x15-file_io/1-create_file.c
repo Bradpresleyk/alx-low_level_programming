@@ -10,9 +10,10 @@
 int create_file(const char *filename, char *text_content)
 {
 	int file_d;
-	ssize_t lenw;
+	int nletters;
+	int rwr;
 
-	if (filename == NULL)
+	if (!filename)
 	{
 	return (-1);
 	}
@@ -21,15 +22,20 @@ int create_file(const char *filename, char *text_content)
 	{
 	return (-1);
 	}
-	if (text_content != NULL)
+	if (!text_content)
 	{
-	lenw = write(file_d, text_content, strlen(text_content));
-	if (lenw == -1)
+	text_content = "";
+	}
+	for (nletters = 0; text_content[nletters]; nletters++)
+		;
+
+	rwr = write(file_d, text_content, nlettters);
+
+	if (rwr == -1)
 	{
-	close(file_d);
 	return (-1);
 	}
-	}
 	close(file_d);
+
 	return (1);
 }
