@@ -4,14 +4,7 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <unistd.h>
-/**
- * check_IO_stat - checks if a file can be opened or closed
- * @stat: file descriptor of file to be opened
- * @filename: name of file
- * @mode: closing or opening
- * @fd: file descriptor
- * Return: void
- */
+
 void check_IO_stat(int stat, int fd, char *filename, char mode);
 /**
  * main - copies the content of one file to another
@@ -53,4 +46,30 @@ int main(int argc, char *argv[])
 	close_dest = close(dest);
 	check_IO_stat(close_dest, dest, NULL, 'c');
 	return (0);
+}
+/**
+ * check_IO_stat - checks if a file can be opened or closed
+ * @stat: file descriptor of file to be opened
+ * @filename: name of file
+ * @mode: closing or opening
+ * @fd: file descriptor
+ * Return: void
+ */
+void check_IO_stat(int stat, int fd, char *filename, char mode)
+{
+	if (mode == 'C' && stat == -1)
+	{
+	dprintf(STDERR_FILENO, "Error: can't close fd %s\n", filename);
+	exit(100);
+	}
+	else if (mode == 'O' && stat == -1)
+	{
+	dprintf(STDERR_FILENO, "Error: can't read from file %s\n", filename);
+	exit(98);
+	}
+	else if (mode == 'W' && stat == -1)
+	{
+	dprintf(STDERR_FILENO, "Error: can't write to %s\n", filename);
+	exit(99);
+	}
 }
