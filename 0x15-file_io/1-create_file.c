@@ -1,6 +1,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "main.h"
 /**
  * create_file - Function that creates a file
  * @filename: filename
@@ -29,7 +30,7 @@ int create_file(const char *filename, char *text_content)
 	for (nletters = 0; text_content[nletters]; nletters++)
 		;
 
-	rwr = write(file_d, text_content, nlettters);
+	rwr = write(file_d, text_content, nletters);
 
 	if (rwr == -1)
 	{
