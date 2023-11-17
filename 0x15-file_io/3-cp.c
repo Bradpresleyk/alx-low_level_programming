@@ -4,6 +4,7 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include "main.h"
 
 void check_IO_stat(int stat, int fd, char *filename, char mode);
 /**
