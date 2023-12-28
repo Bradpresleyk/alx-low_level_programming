@@ -25,7 +25,7 @@ int create_file(const char *filename, char *text_content)
 	perror("Error setting file permissions");
 	close(fp);
 	unlink(filename);
-	return (1);
+	return (-1);
 	}
 	buffer = malloc(sizeof(char) * sizeof(text_content));
 	w = write(fp, buffer, *text_content);
