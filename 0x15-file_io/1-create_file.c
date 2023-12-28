@@ -9,7 +9,7 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-	FILE *fp;
+	ssize fp;
 	char *buffer;
 	ssize_t w;
 
