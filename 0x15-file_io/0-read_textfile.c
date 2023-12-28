@@ -1,34 +1,47 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "main.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+#include <stdlib.h>
 /**
- * read_textfile - Reads from file and prints to stdout
- * @filename: Name of file
- * @letters: Number of letters to read
- * Return: Number of letters or 0 if fails
+ * read_textfile- Read text file print to STDOUT.
+ * @filename: text file being read
+ * @letters: number of letters to be read
+ * Return: Number of letters or 0 on fail
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	FILE *fp;
-	char ch;
-	int i;
-
-	fp = fopen(filename, "r");
-
-	if (fp)
-	{
-	for (i = 0; i < letters; i++)
-	{
-	ch += fgetc(fp);
-	}
-	fclose(fp);
-	return (ch);
-	}
-	else
+	if (filename == NULL)
 	{
 	return (0);
 	}
+	FILE *file = fopen(filename, "r");
+
+	if (file == NULL)
+	{
+	return (0);
+	}
+	char *buffer = (char *)malloc(letters + 1);
+
+	if (buffer == NULL)
+	{
+	fclose(file);
+	return (0);
+	}
+	size_t bytesRead = fread(buffer, 1, letters, file);
+
+	fclose(file);
+
+	if (bytesRead == 0)
+	{
+	free(buffer);
+	return (0);
+	}
+	buffer[bytesRead] = '\0';
+	ssize_t bytesWritten = fwrite(buffer, 1, bytesRead, stdout);
+
+	free(buffer);
+
+	if (bytesWritten != bytesRead)
+	{
+	return (0);
+	}
+	return (bytesRead);
 }
