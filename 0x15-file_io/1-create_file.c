@@ -15,7 +15,7 @@ int create_file(const char *filename, char *text_content)
 	ssize_t w;
 	mode_t permissions = S_IRUSR | S_IWUSR;
 
-	fp = open(filename, O_WRONLY | O_CREAT | O_EXCL);
+	fp = open(filename, O_WRONLY | O_CREAT | O_EXCL, permissions);
 	if (fp == -1)
 	{
 	return (-1);
