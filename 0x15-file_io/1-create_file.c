@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
-#include "main.c"
 /**
  * create_file - Creates a file
  * @filename: name of file
@@ -10,18 +9,24 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-	ssize_t fp;
-	int *buffer;
-	ssize_t w;
+	int fd, w, len = 0;
+
+	if (filename == NULL)
+		return (-1);
+
+	if (text_content != NULL)
+	{
+		for (len = 0; text_content[len];)
+			len++;
+	}
 
 	fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
-	if (fp == -1)
-	{
-	return (-1);
-	}
-	buffer = malloc(sizeof(char) * sizeof(text_content));
-	w = write(fp, buffer, *text_content);
-	free(buffer);
-	close(fp);
+	w = write(fd, text_content, len);
+
+	if (fd == -1 || w == -1)
+		return (-1);
+
+	close(fd);
+
 	return (1);
 }
